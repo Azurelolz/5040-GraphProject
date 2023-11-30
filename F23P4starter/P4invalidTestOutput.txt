@@ -1,0 +1,4 @@
+debug cmd activated
+Unrecognized input remove
+Unrecognized input print
+Unrecognized input test
