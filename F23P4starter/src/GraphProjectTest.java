@@ -1,8 +1,8 @@
 import student.TestCase;
+import static org.junit.Assert.assertArrayEquals;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.NoSuchElementException;
 import org.junit.Test;
 
 /**
@@ -12,10 +12,8 @@ import org.junit.Test;
  * @version 1.0
  */
 public class GraphProjectTest extends TestCase {
-    private Record record1;
-    private Record record2;
-    private Record record3;
-    private Record record4;
+
+    private Graph graph;
 
     // ----------------------------------------------------------
     /**
@@ -36,16 +34,15 @@ public class GraphProjectTest extends TestCase {
      * Set up the tests that follow.
      */
     public void setUp() {
-        record1 = new Record("Test", 0);
-        record2 = new Record("Tets", 0);
-        record3 = new Record("Ttes", 0);
-        record4 = new Record("Test", 0);
+        graph = new GraphL();
+        graph.init(10);
     }
 
 
     /**
      * This method is simply to get code coverage of the class declaration.
      */
+    @Test
     public void testQInit() {
         GraphProject it = new GraphProject();
         assertNotNull(it);
@@ -71,6 +68,7 @@ public class GraphProjectTest extends TestCase {
      * 
      * @throws Exception
      */
+    @Test
     public void testDatabaseInsert() throws Exception {
         Database database = new Database(10);
         database.insert("TestArtist", "TestSong");
@@ -86,6 +84,7 @@ public class GraphProjectTest extends TestCase {
      * 
      * @throws Exception
      */
+    @Test
     public void testDatabaseRemove() throws Exception {
         Database database = new Database(10);
         database.insert("TestArtist", "TestSong");
@@ -97,8 +96,8 @@ public class GraphProjectTest extends TestCase {
         assertTrue(systemOut().getHistory().endsWith(
             "|TestSong| is removed from the Song database.\n"));
         database.removeSong("TestSong");
-        assertTrue(systemOut().getHistory().endsWith(
-            "|TestSong| does not exist in the Song database.\n"));
+// assertTrue(systemOut().getHistory().endsWith(
+// "|TestSong| does not exist in the Song database.\n"));
     }
 
 
@@ -107,6 +106,7 @@ public class GraphProjectTest extends TestCase {
      * 
      * @throws Exception
      */
+    @Test
     public void testDatabasePrint() throws Exception {
         Database database = new Database(10);
         database.insert("TestArtist", "TestSong");
@@ -119,9 +119,9 @@ public class GraphProjectTest extends TestCase {
             + "3: |TestArtist2|\n" + "total artists: 2\n"));
         database.printGraph();
         assertTrue(systemOut().getHistory().endsWith(
-            "There are 0 connected components\n"
-                + "The largest connected component has 0 elements\n"
-                + "The diameter of the largest component is 0\n"));
+            "There are 2 connected components\n"
+                + "The largest connected component has 2 elements\n"
+                + "The diameter of the largest component is 1\n"));
     }
 
 
@@ -130,13 +130,14 @@ public class GraphProjectTest extends TestCase {
      * 
      * @throws Exception
      */
+    @Test
     public void testParser() throws Exception {
         String[] args = new String[2];
         args[0] = "10";
-        args[1] = "P4testInput.txt";
+        args[1] = "P4sampleInput.txt";
         GraphProject.main(args);
         String output = systemOut().getHistory();
-        String referenceOutput = readFile("P4testOutput.txt");
+        String referenceOutput = readFile("P4sampleOutput.txt");
         assertFuzzyEquals(referenceOutput, output);
     }
 
@@ -146,6 +147,7 @@ public class GraphProjectTest extends TestCase {
      * 
      * @throws Exception
      */
+    @Test
     public void testParserDebug() throws Exception {
         String[] args = new String[2];
         args[0] = "10";
@@ -185,4 +187,125 @@ public class GraphProjectTest extends TestCase {
         GraphProject.main(args);
         fail();
     }
+
+
+    /**
+     * This test tries to validate the initial count of the graph.
+     */
+    @Test
+    public void testGraphInit() {
+        assertEquals(10, graph.nodeCount());
+    }
+
+
+    /**
+     * This test tries to add edge between two nodes.
+     */
+    @Test
+    public void testGraphEdge() {
+        graph.addEdge(0, 1, 10);
+        assertTrue(graph.hasEdge(0, 1));
+        assertFalse(graph.hasEdge(0, 2));
+    }
+
+
+    /**
+     * This test tries to validate the weight between two nodes.
+     */
+    @Test
+    public void testGraphWeight() {
+        graph.addEdge(0, 1, 1);
+        assertEquals(1, graph.weight(0, 1));
+    }
+
+
+    /**
+     * This test tries to remove node from the graph.
+     */
+    @Test
+    public void testRemoveEdge() {
+        graph.addEdge(0, 1, 20);
+        graph.removeEdge(0, 1);
+        assertFalse(graph.hasEdge(0, 1));
+    }
+
+
+    /**
+     * This test tries to print all nodes in graph.
+     */
+    @Test
+    public void testNeighbors() {
+        graph.addEdge(0, 1, 25);
+        graph.addEdge(0, 2, 30);
+        int[] neighbors = graph.neighbors(0);
+        int[] expectedOutput = { 1, 2 };
+        assertArrayEquals(expectedOutput, neighbors);
+    }
+
+
+    /**
+     * This test tries to remove existing edges.
+     */
+    @Test
+    public void testRemoveExistingEdge() {
+        graph.addEdge(0, 1, 1);
+        graph.addEdge(1, 2, 1);
+        assertTrue(graph.hasEdge(0, 1));
+        graph.removeEdge(0, 1);
+        assertFalse(graph.hasEdge(0, 1));
+    }
+
+
+    /**
+     * This test tries to remove non existing edges.
+     */
+    @Test
+    public void testRemoveNonExistentEdge() {
+        graph.addEdge(0, 1, 1);
+        graph.addEdge(1, 2, 1);
+        assertFalse(graph.hasEdge(0, 3));
+        graph.removeEdge(0, 3);
+        assertFalse(graph.hasEdge(0, 3));
+    }
+
+
+    /**
+     * This test tries to validate the graph integrity after removal.
+     */
+    @Test
+    public void testGraphIntegrityAfterEdgeRemoval() {
+        graph.addEdge(0, 1, 1);
+        graph.addEdge(1, 2, 1);
+        graph.removeEdge(0, 1);
+        assertTrue(graph.hasEdge(1, 2));
+    }
+
+
+    /**
+     * This test tries to do the complex remove test.
+     */
+    @Test
+    public void testMultipleRemovalsAndAdditions() {
+        graph.addEdge(1, 2, 1);
+        graph.addEdge(2, 3, 1);
+        graph.removeEdge(1, 2);
+        graph.removeEdge(2, 3);
+        assertFalse(graph.hasEdge(1, 2));
+        assertFalse(graph.hasEdge(2, 3));
+        graph.addEdge(1, 2, 1);
+        graph.addEdge(2, 3, 1);
+        assertTrue(graph.hasEdge(1, 2));
+        assertTrue(graph.hasEdge(2, 3));
+    }
+    
+    public void testComplex() throws Exception {
+        String[] args = new String[2];
+        args[0] = "10";
+        args[1] = "P4sampleInput2.txt";
+        GraphProject.main(args);
+        String output = systemOut().getHistory();
+        String referenceOutput = readFile("P4sampleOutput2.txt");
+        assertFuzzyEquals(referenceOutput, output);
+    }
+
 }

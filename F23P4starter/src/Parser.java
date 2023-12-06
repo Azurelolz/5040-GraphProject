@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -58,8 +57,13 @@ public class Parser {
                         break;
 
                     case "remove":
-                        type = sc.next();
-                        item = sc.nextLine().trim();
+                        String[] parts = sc.nextLine().trim().split(" ", 2);
+                        if (parts.length < 2) {
+                            System.out.println("Unrecognized input remove");
+                            break;
+                        }
+                        type = parts[0];
+                        item = parts[1];
 
                         if (type.equals("song")) {
                             database.removeSong(item);
@@ -95,9 +99,11 @@ public class Parser {
             }
         }
         catch (FileNotFoundException e) {
+            System.out.println("No such file.");
             throw e;
         }
         catch (Exception e) {
+            System.out.println("An error occurs while reading the file.");
             throw e;
         }
 

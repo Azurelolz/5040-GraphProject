@@ -155,8 +155,6 @@ public class Hash {
             probeCount++;
         }
 
-        System.out.println("|" + key + "| does not exist in the " + type
-            + " database.");
     }
 
 

@@ -8,6 +8,8 @@
 public class Database {
     private Hash artistHashTable;
     private Hash songHashTable;
+    private GraphL graph;
+    private int nextNodeId;
 
     /**
      * Create a new database with the specified sizes for the hash table and
@@ -19,6 +21,9 @@ public class Database {
     public Database(int hashTableSize) {
         artistHashTable = new Hash(hashTableSize, "Artist");
         songHashTable = new Hash(hashTableSize, "Song");
+        graph = new GraphL();
+        graph.init(hashTableSize);
+        nextNodeId = 0;
     }
 
 
@@ -32,19 +37,45 @@ public class Database {
      * @throws Exception
      */
     public void insert(String artist, String song) throws Exception {
-        Record artistRecord = new Record(artist, 0);
-        Record songRecord = new Record(song, 0);
-        Record checkArtist = artistHashTable.hashSearch(artist);
-        Record checkSong = songHashTable.hashSearch(song);
+        int artistId;
+        int songId;
 
-        if (checkArtist == null) {
+        Record artistRecord = artistHashTable.hashSearch(artist);
+        Record songRecord = songHashTable.hashSearch(song);
+
+        boolean artistExists = artistRecord != null;
+        boolean songExists = songRecord != null;
+
+        if (artistExists) {
+            artistId = artistRecord.getValue();
+        }
+        else {
+            artistId = nextNodeId++;
+            artistRecord = new Record(artist, artistId);
             artistHashTable.hashInsert(artistRecord);
+            graph.addEdge(artistId, artistId, 1);
         }
 
-        if (checkSong == null) {
+        if (songExists) {
+            songId = songRecord.getValue();
+        }
+        else {
+            songId = nextNodeId++;
+            songRecord = new Record(song, songId);
             songHashTable.hashInsert(songRecord);
+            graph.addEdge(songId, songId, 1);
         }
 
+        if (artistExists && songExists) {
+            if (graph.hasEdge(artistId, songId)) {
+                System.out.println("|" + artist + "<SEP>" + song
+                    + "| duplicates a record already in the database.");
+                return; // Skip adding edge as it's a duplicate
+            }
+        }
+
+        graph.addEdge(artistId, songId, 1);
+        graph.addEdge(songId, artistId, 1);
     }
 
 
@@ -55,7 +86,16 @@ public class Database {
      *            The artist name to remove.
      */
     public void removeArtist(String artist) {
-        artistHashTable.hashDelete(artist);
+        Record artistRecord = artistHashTable.hashSearch(artist);
+        if (artistRecord != null) {
+            artistHashTable.hashDelete(artist);
+            removeNodeAndEdges(artistRecord.getValue());
+//            graph.removeNode(artistRecord.getValue());
+        }
+        else {
+            System.out.println("|" + artist
+                + "| does not exist in the Artist database.");
+        }
     }
 
 
@@ -66,7 +106,40 @@ public class Database {
      *            The song name to remove.
      */
     public void removeSong(String song) {
-        songHashTable.hashDelete(song);
+        Record songRecord = songHashTable.hashSearch(song);
+        if (songRecord != null) {
+            songHashTable.hashDelete(song);
+            removeNodeAndEdges(songRecord.getValue());
+//            graph.removeNode(songRecord.getValue());
+        }
+        else {
+            System.out.println("|" + song
+                + "| does not exist in the Song database.");
+        }
+    }
+
+
+    /**
+     * Remove node and edges from graph.
+     * 
+     * @param nodeId
+     *            The targeted node id.
+     */
+    private void removeNodeAndEdges(int nodeId) {
+        for (int i = 0; i < graph.nodeCount(); i++) {
+            if (graph.hasEdge(nodeId, i)) {
+//                graph.getArr();
+                graph.removeEdge(nodeId, i);
+//                System.out.println("== After first remove ==");
+//                graph.getArr();
+            }
+            
+            if (graph.hasEdge(i, nodeId)) {
+                graph.removeEdge(i, nodeId);
+//                System.out.println("== After second remove ==");
+//                graph.getArr();
+            }
+        }
     }
 
 
@@ -90,9 +163,10 @@ public class Database {
      * Print the details of the graph.
      */
     public void printGraph() {
-        System.out.println("There are 0 connected components");
-        System.out.println("The largest connected component has 0 elements");
-        System.out.println("The diameter of the largest component is 0");
+//        Traversal traversal = new Traversal();
+//        traversal.graphTraverse(graph);
+//        traversal.findConnectedComponents();
+        graph.findConnectedComponents();
     }
 
 }

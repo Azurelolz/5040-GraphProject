@@ -1,0 +1,97 @@
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
+
+remove song Long Lonesome Blues1
+
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues2
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
+
+remove artist Blind Lemon Jefferson1
+
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson3<SEP>Long Lonesome Blues7
+insert Blind Lemon Jefferson4<SEP>Long Lonesome Blues8
+insert Blind Lemon Jefferson5<SEP>Long Lonesome Blues9
+insert Blind Lemon Jefferson7<SEP>Long Lonesome Blues11
+print artist
+print song
+print graph
+
+insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson999<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson9999<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson99999<SEP>Long Lonesome Blues6
+
+print artist
+print song
+print graph
+
+remove song Long Lonesome Blues6
+print graph
+
+remove artist Blind Lemon Jefferson99
+remove artist Blind Lemon Jefferson999
+remove artist Blind Lemon Jefferson9999
+remove artist Blind Lemon Jefferson99999
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues2
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues1
+insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues4
+insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues12
+
+print graph
+
+
+
+
+remove artist Blind Lemon Jefferson1
+remove artist Blind Lemon Jefferson2
+remove artist Blind Lemon Jefferson3
+remove artist Blind Lemon Jefferson4
+remove artist Blind Lemon Jefferson5
+remove artist Blind Lemon Jefferson7
+remove artist Blind Lemon Jefferson9
+remove artist Blind Lemon Jefferson99
+
+
+print graph
+
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues2
+insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues1
+insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues4
+insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues12
+
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
+
+insert Blind Lemon Jefferson3<SEP>Long Lonesome Blues7
+insert Blind Lemon Jefferson4<SEP>Long Lonesome Blues8
+insert Blind Lemon Jefferson5<SEP>Long Lonesome Blues9
+insert Blind Lemon Jefferson7<SEP>Long Lonesome Blues11
+
+print graph
+
+
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues2
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues3
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues7
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues8
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues9
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues10
+insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues11
+
+print graph
+
+

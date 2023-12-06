@@ -1,0 +1,24 @@
+print song
+print artist
+print graph
+remove song When Summer's Through
+print song
+print artist
+print graph
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+insert Blind Lemon Jefferson<SEP>long Lonesome Blues
+print song
+print artist
+print graph
+remove song Long Lonesome Blues
+print song
+print artist
+print graph
+remove song long Lonesome Blues
+print song
+print artist
+print graph
+remove artist Blind Lemon Jefferson
+print song
+print artist
+print graph
