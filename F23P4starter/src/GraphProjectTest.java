@@ -298,6 +298,11 @@ public class GraphProjectTest extends TestCase {
         assertTrue(graph.hasEdge(2, 3));
     }
     
+    /**
+     * This test tries to do the complex input.
+     * @throws Exception 
+     */
+    @Test
     public void testComplex() throws Exception {
         String[] args = new String[2];
         args[0] = "10";

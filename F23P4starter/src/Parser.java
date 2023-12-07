@@ -57,13 +57,8 @@ public class Parser {
                         break;
 
                     case "remove":
-                        String[] parts = sc.nextLine().trim().split(" ", 2);
-                        if (parts.length < 2) {
-                            System.out.println("Unrecognized input remove");
-                            break;
-                        }
-                        type = parts[0];
-                        item = parts[1];
+                        type = sc.next();
+                        item = sc.nextLine().trim();
 
                         if (type.equals("song")) {
                             database.removeSong(item);

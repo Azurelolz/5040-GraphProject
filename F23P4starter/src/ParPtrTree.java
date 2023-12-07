@@ -7,6 +7,7 @@
  */
 public class ParPtrTree {
     private int[] array; // Node array
+    private int[] size;
 
     /**
      * Initialize the parent pointer tree.
@@ -16,14 +17,16 @@ public class ParPtrTree {
      */
     ParPtrTree(int size) {
         array = new int[size]; // Create node array
+        this.size = new int[size];
         for (int i = 0; i < size; i++) {
             array[i] = -1; // Each node is its own root to start
+            this.size[i] = 1;
         }
     }
 
 
     /**
-     * Merge two subtrees if they are different
+     * Merge two subtrees if they are different.
      * 
      * @param a
      *            The first node.
@@ -35,23 +38,23 @@ public class ParPtrTree {
         int root2 = find(b); // Find root of node b
         if (root1 != root2) { // Merge two trees
             array[root1] = root2;
+            size[root2] += size[root1];
         }
     }
 
 
     /**
-     * Return the root of curr's tree
+     * Return the root of curr's tree.
      * 
      * @param curr
      *            The current node.
      * @return The root of current node's tree.
      */
     public int find(int curr) {
-//        System.out.println("Input curr = " + curr);
         while (array[curr] != -1) {
             curr = array[curr];
         }
-//        System.out.println("Return curr = " + curr);
         return curr; // Now at root
     }
+
 }

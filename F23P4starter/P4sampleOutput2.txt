@@ -1,117 +1,73 @@
-|Blind Lemon Jefferson1| is added to the Artist database.
-|Long Lonesome Blues1| is added to the Song database.
-|Blind Lemon Jefferson1<SEP>Long Lonesome Blues1| duplicates a record already in the database.
-|Long Lonesome Blues1| is removed from the Song database.
-|Long Lonesome Blues2| is added to the Song database.
-|Long Lonesome Blues3| is added to the Song database.
-|Long Lonesome Blues4| is added to the Song database.
-|Blind Lemon Jefferson1| is removed from the Artist database.
-|Blind Lemon Jefferson1| is added to the Artist database.
-|Long Lonesome Blues5| is added to the Song database.
-|Long Lonesome Blues6| is added to the Song database.
-|Blind Lemon Jefferson2| is added to the Artist database.
-|Blind Lemon Jefferson3| is added to the Artist database.
-Song hash table size doubled.
-|Long Lonesome Blues7| is added to the Song database.
-|Blind Lemon Jefferson4| is added to the Artist database.
-|Long Lonesome Blues8| is added to the Song database.
-|Blind Lemon Jefferson5| is added to the Artist database.
-|Long Lonesome Blues9| is added to the Song database.
-Artist hash table size doubled.
-|Blind Lemon Jefferson7| is added to the Artist database.
-|Long Lonesome Blues11| is added to the Song database.
-0: |Blind Lemon Jefferson2|
-1: |Blind Lemon Jefferson7|
-4: |Blind Lemon Jefferson1|
-8: |Blind Lemon Jefferson5|
-12: |Blind Lemon Jefferson4|
-16: |Blind Lemon Jefferson3|
-total artists: 6
-3: |Long Lonesome Blues5|
-7: |Long Lonesome Blues4|
-8: |Long Lonesome Blues9|
-9: |Long Lonesome Blues11|
-11: |Long Lonesome Blues3|
-12: |Long Lonesome Blues8|
-15: |Long Lonesome Blues2|
-16: |Long Lonesome Blues7|
-19: |Long Lonesome Blues6|
-total songs: 9
-There are 7 connected components
-The largest connected component has 5 elements
-The diameter of the largest component is 3
-|Blind Lemon Jefferson9| is added to the Artist database.
-|Blind Lemon Jefferson99| is added to the Artist database.
-|Blind Lemon Jefferson999| is added to the Artist database.
-|Blind Lemon Jefferson9999| is added to the Artist database.
-Artist hash table size doubled.
-|Blind Lemon Jefferson99999| is added to the Artist database.
-0: |Blind Lemon Jefferson2|
-1: |Blind Lemon Jefferson7|
-8: |Blind Lemon Jefferson5|
-16: |Blind Lemon Jefferson3|
-17: |Blind Lemon Jefferson999|
-24: |Blind Lemon Jefferson1|
-25: |Blind Lemon Jefferson99|
-26: |Blind Lemon Jefferson99999|
-32: |Blind Lemon Jefferson4|
-33: |Blind Lemon Jefferson9|
-34: |Blind Lemon Jefferson9999|
-total artists: 11
-3: |Long Lonesome Blues5|
-7: |Long Lonesome Blues4|
-8: |Long Lonesome Blues9|
-9: |Long Lonesome Blues11|
-11: |Long Lonesome Blues3|
-12: |Long Lonesome Blues8|
-15: |Long Lonesome Blues2|
-16: |Long Lonesome Blues7|
-19: |Long Lonesome Blues6|
-total songs: 9
-There are 7 connected components
-The largest connected component has 10 elements
-The diameter of the largest component is 3
-|Long Lonesome Blues6| is removed from the Song database.
-There are 13 connected components
-The largest connected component has 3 elements
-The diameter of the largest component is 2
-|Blind Lemon Jefferson99| is removed from the Artist database.
-|Blind Lemon Jefferson999| is removed from the Artist database.
-|Blind Lemon Jefferson9999| is removed from the Artist database.
-|Blind Lemon Jefferson99999| is removed from the Artist database.
-|Long Lonesome Blues1| is added to the Song database.
-|Blind Lemon Jefferson99| is added to the Artist database.
-|Long Lonesome Blues12| is added to the Song database.
-There are 6 connected components
-The largest connected component has 5 elements
-The diameter of the largest component is 4
-|Blind Lemon Jefferson1| is removed from the Artist database.
-|Blind Lemon Jefferson2| is removed from the Artist database.
-|Blind Lemon Jefferson3| is removed from the Artist database.
-|Blind Lemon Jefferson4| is removed from the Artist database.
-|Blind Lemon Jefferson5| is removed from the Artist database.
-|Blind Lemon Jefferson7| is removed from the Artist database.
-|Blind Lemon Jefferson9| is removed from the Artist database.
-|Blind Lemon Jefferson99| is removed from the Artist database.
-There are 10 connected components
+|When Summer's Through| does not exist in the Song database.
+total songs: 0
+total artists: 0
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+|Blind Lemon Jefferson<SEP>Long Lonesome Blues| duplicates a record already in the database.
+|Long Lonesome Blues| is removed from the Song database.
+5: TOMBSTONE
+total songs: 0
+0: |Blind Lemon Jefferson|
+total artists: 1
+There are 1 connected components
 The largest connected component has 1 elements
 The diameter of the largest component is 0
-|Blind Lemon Jefferson2| is added to the Artist database.
-|Blind Lemon Jefferson9| is added to the Artist database.
-|Blind Lemon Jefferson99| is added to the Artist database.
-|Blind Lemon Jefferson1| is added to the Artist database.
-|Blind Lemon Jefferson3| is added to the Artist database.
-|Blind Lemon Jefferson4| is added to the Artist database.
-|Blind Lemon Jefferson5| is added to the Artist database.
-|Blind Lemon Jefferson7| is added to the Artist database.
-There are 6 connected components
-The largest connected component has 5 elements
-The diameter of the largest component is 4
-|Blind Lemon Jefferson1<SEP>Long Lonesome Blues4| duplicates a record already in the database.
-|Blind Lemon Jefferson1<SEP>Long Lonesome Blues5| duplicates a record already in the database.
+|Long Lonesome Blues 2| is added to the Song database.
+|Long Lonesome Blues 3| is added to the Song database.
+|Long Lonesome Blues 4| is added to the Song database.
+|Long Lonesome Blues 5| is added to the Song database.
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
 Song hash table size doubled.
-|Long Lonesome Blues6| is added to the Song database.
-|Long Lonesome Blues10| is added to the Song database.
-There are 1 connected components
-The largest connected component has 20 elements
-The diameter of the largest component is 5
+|Long Lonesome Blues| is added to the Song database.
+|Mississippi Boweavil Blues| is added to the Song database.
+|Fixin' To Die Blues| is added to the Song database.
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+0: |Long Lonesome Blues 5|
+1: |Fixin' To Die Blues|
+2: |Mississippi Boweavil Blues|
+15: |Long Lonesome Blues|
+16: |Ma Rainey's Black Bottom|
+17: |Long Lonesome Blues 2|
+18: |Long Lonesome Blues 3|
+19: |Long Lonesome Blues 4|
+total songs: 8
+There are 2 connected components
+The largest connected component has 5 elements
+The diameter of the largest component is 2
+|Sleepy| does not exist in the Song database.
+|ma rainey| does not exist in the Artist database.
+|Ma Rainey| is removed from the Artist database.
+0: |Blind Lemon Jefferson|
+7: TOMBSTONE
+total artists: 1
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey 2| is added to the Artist database.
+|Ma Rainey 3| is added to the Artist database.
+|Ma Rainey 4| is added to the Artist database.
+Artist hash table size doubled.
+|Ma Rainey 5| is added to the Artist database.
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+8: |Ma Rainey 5|
+11: |Ma Rainey 4|
+15: |Ma Rainey 3|
+19: |Ma Rainey 2|
+total artists: 6
+0: |Long Lonesome Blues 5|
+1: |Fixin' To Die Blues|
+2: |Mississippi Boweavil Blues|
+15: |Long Lonesome Blues|
+16: |Ma Rainey's Black Bottom|
+17: |Long Lonesome Blues 2|
+18: |Long Lonesome Blues 3|
+19: |Long Lonesome Blues 4|
+total songs: 8
+There are 5 connected components
+The largest connected component has 6 elements
+The diameter of the largest component is 2

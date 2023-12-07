@@ -53,7 +53,7 @@ public class Database {
             artistId = nextNodeId++;
             artistRecord = new Record(artist, artistId);
             artistHashTable.hashInsert(artistRecord);
-            graph.addEdge(artistId, artistId, 1);
+            graph.setValue(artistId, String.valueOf(artistId));
         }
 
         if (songExists) {
@@ -63,14 +63,14 @@ public class Database {
             songId = nextNodeId++;
             songRecord = new Record(song, songId);
             songHashTable.hashInsert(songRecord);
-            graph.addEdge(songId, songId, 1);
+            graph.setValue(songId, String.valueOf(songId));
         }
 
         if (artistExists && songExists) {
             if (graph.hasEdge(artistId, songId)) {
                 System.out.println("|" + artist + "<SEP>" + song
                     + "| duplicates a record already in the database.");
-                return; // Skip adding edge as it's a duplicate
+                return;
             }
         }
 
@@ -90,7 +90,7 @@ public class Database {
         if (artistRecord != null) {
             artistHashTable.hashDelete(artist);
             removeNodeAndEdges(artistRecord.getValue());
-//            graph.removeNode(artistRecord.getValue());
+            graph.setValue(artistRecord.getValue(), null);
         }
         else {
             System.out.println("|" + artist
@@ -110,7 +110,7 @@ public class Database {
         if (songRecord != null) {
             songHashTable.hashDelete(song);
             removeNodeAndEdges(songRecord.getValue());
-//            graph.removeNode(songRecord.getValue());
+            graph.setValue(songRecord.getValue(), null);
         }
         else {
             System.out.println("|" + song
@@ -128,16 +128,11 @@ public class Database {
     private void removeNodeAndEdges(int nodeId) {
         for (int i = 0; i < graph.nodeCount(); i++) {
             if (graph.hasEdge(nodeId, i)) {
-//                graph.getArr();
                 graph.removeEdge(nodeId, i);
-//                System.out.println("== After first remove ==");
-//                graph.getArr();
             }
-            
+
             if (graph.hasEdge(i, nodeId)) {
                 graph.removeEdge(i, nodeId);
-//                System.out.println("== After second remove ==");
-//                graph.getArr();
             }
         }
     }
@@ -163,10 +158,7 @@ public class Database {
      * Print the details of the graph.
      */
     public void printGraph() {
-//        Traversal traversal = new Traversal();
-//        traversal.graphTraverse(graph);
-//        traversal.findConnectedComponents();
-        graph.findConnectedComponents();
+        graph.printGraph();
     }
 
 }

@@ -1,4 +1,3 @@
-
 /**
  * The main graph class
  *
@@ -24,7 +23,7 @@ public class GraphL implements Graph {
     }
 
     private Edge[] nodeArray;
-    private Object[] nodeValues;
+    private String[] nodeValues;
     private int numEdge;
     private int size;
     private int capacity;
@@ -44,7 +43,7 @@ public class GraphL implements Graph {
         for (int i = 0; i < n; i++) {
             nodeArray[i] = new Edge(-1, -1, null, null);
         }
-        nodeValues = new Object[n];
+        nodeValues = new String[n];
         numEdge = 0;
         size = 0;
         capacity = n;
@@ -64,15 +63,14 @@ public class GraphL implements Graph {
 
 
     @Override
-    public Object getValue(int v) {
+    public String getValue(int v) {
         return nodeValues[v];
     }
 
 
     @Override
-    public void setValue(int v, Object val) {
+    public void setValue(int v, String val) {
         nodeValues[v] = val;
-
     }
 
 
@@ -143,7 +141,6 @@ public class GraphL implements Graph {
             }
         }
         numEdge--;
-
     }
 
 
@@ -176,7 +173,7 @@ public class GraphL implements Graph {
         if (size > capacity / 2) {
             capacity *= 2;
             Edge[] newNodeArray = new Edge[capacity];
-            Object[] newNodeValues = new Object[capacity];
+            String[] newNodeValues = new String[capacity];
             for (int i = 0; i < nodeArray.length; i++) {
                 newNodeArray[i] = nodeArray[i];
                 newNodeValues[i] = nodeValues[i];
@@ -194,157 +191,85 @@ public class GraphL implements Graph {
         }
     }
 
-    // Marks for visited nodes
-    private static final Object VISITED = new Object();
 
     /**
-     * Initiates DFS traversal on the entire graph.
+     * Print the graph.
      */
-    public void graphTraverse() {
-        for (int v = 0; v < this.nodeCount(); v++) {
-            this.setValue(v, null); // Initialize
-        }
-        for (int v = 0; v < this.nodeCount(); v++) {
-            if (this.getValue(v) != VISITED) {
-                depthFirstSearch(v);
-            }
-        }
-    }
+    public void printGraph() {
+        ParPtrTree unionFind = new ParPtrTree(nodeCount());
+        int[] componentSizes = new int[nodeCount()];
 
-
-    /**
-     * DFS method to traverse from a specific node.
-     * 
-     * @param v
-     *            The specific node.
-     * @return The traverse size from the node.
-     */
-    private int depthFirstSearch(int v) {
-        this.setValue(v, VISITED);
-        int searchSize = 1;
-        if (isEmpty()) {
-            searchSize = 0;
-        }
-
-        int[] nList = this.neighbors(v);
-        for (int neighbor : nList) {
-            if (this.getValue(neighbor) != VISITED) {
-                searchSize += depthFirstSearch(neighbor);
-            }
-        }
-        return searchSize;
-    }
-
-
-    /**
-     * Finds the largest connected component.
-     */
-    public void findConnectedComponents() {
-        
-        graphTraverse();
-
-        int largestComponentSize = 0;
-        for (int v = 0; v < this.nodeCount(); v++) {
-            this.setValue(v, null);
-        }
-
-        for (int v = 0; v < this.nodeCount(); v++) {
-            if (this.getValue(v) != VISITED) {
-                int componentSize = depthFirstSearch(v);
-                if (componentSize > largestComponentSize) {
-                    largestComponentSize = componentSize;
+        for (int i = 0; i < nodeCount(); i++) {
+            for (int j = 0; j < nodeCount(); j++) {
+                if (hasEdge(i, j)) {
+                    unionFind.union(i, j);
                 }
             }
         }
-        System.out.println("There are " + countConnectedComponents()
+
+        int componentCount = 0;
+        boolean[] visited = new boolean[nodeCount()];
+
+        for (int i = 0; i < nodeArray.length; i++) {
+            if (nodeArray[i].next != null) {
+                visited[i] = true;
+            }
+        }
+
+        for (int i = 0; i < nodeArray.length; i++) {
+            if (visited[i] && unionFind.find(i) == i) {
+                componentCount++;
+            }
+            else if (isIsolatedNode(i)) {
+                componentCount++;
+            }
+        }
+
+        for (int i = 0; i < nodeCount(); i++) {
+            if (nodeValues[i] != null) {
+                int root = unionFind.find(i);
+                componentSizes[root]++;
+            }
+        }
+
+        int maxSize = 0;
+        for (int i = 0; i < componentSizes.length; i++) {
+            int currentSize = componentSizes[i];
+            maxSize = Math.max(maxSize, currentSize);
+        }
+
+        int[][] d = new int[nodeCount()][nodeCount()];
+        new Floyd(this, d);
+
+        int diameter = 0;
+        for (int i = 0; i < nodeCount(); i++) {
+            for (int j = 0; j < nodeCount(); j++) {
+                if (unionFind.find(i) == unionFind.find(j)
+                    && d[i][j] < Integer.MAX_VALUE) {
+                    diameter = Math.max(diameter, d[i][j]);
+                }
+            }
+        }
+
+        System.out.println("There are " + componentCount
             + " connected components");
-        System.out.println("The largest connected component has "
-            + largestComponentSize + " elements");
+        System.out.println("The largest connected component has " + maxSize
+            + " elements");
         System.out.println("The diameter of the largest component is "
-            + getGraphDiameter());
-    }
-
-    /**
-     * Compute the graph diameter.
-     * 
-     * @return The diameter of the largest component.
-     */
-    public int getGraphDiameter() {
-        if (isEmpty()) {
-            return 0;
-        }
-        int[][] shortestPaths = Floyd.computeShortestPaths(this);
-        return Floyd.calculateDiameter(shortestPaths);
+            + diameter);
     }
 
 
     /**
-     * Count the connected components.
+     * Check whether is isolated node.
      * 
-     * @return The number of connected components.
+     * @param nodeId
+     *            The node to check.
+     * @return Return true if it is isolated.
      */
-    public int countConnectedComponents() {
-//        if (isEmpty()) {
-//            return 0;
-//        }
-        ParPtrTree unionFind = new ParPtrTree(nodeArray.length);
-
-        for (int i = 0; i < nodeArray.length; i++) {
-            Edge edge = nodeArray[i].next;
-            while (edge != null) {
-                unionFind.union(i, edge.vertex);
-                edge = edge.next;
-            }
-        }
-
-        int count = 0;
-        boolean[] hasEdge = new boolean[nodeArray.length];
-
-        for (int i = 0; i < nodeArray.length; i++) {
-            if (nodeArray[i].next != null) {
-                hasEdge[i] = true;
-            }
-        }
-
-        for (int i = 0; i < nodeArray.length; i++) {
-            if (hasEdge[i] && unionFind.find(i) == i) {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-
-    /**
-     * Check if is empty.
-     * 
-     * @return Return True if is empty.
-     */
-    private boolean isEmpty() {
-        for (int i = 0; i < nodeArray.length; i++) {
-            if (nodeArray[i].next != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-    public void getArr() {
-        for (int j = 0; j < nodeArray.length; j++) {
-            System.out.println("Node Index = " + j);
-            System.out.println("Dummy Header Vertex = " + nodeArray[j].vertex);
-            System.out.println("Dummy Header Weight = " + nodeArray[j].weight);
-            Edge tempNode = nodeArray[j];
-            while (tempNode.next != null) {
-                tempNode = tempNode.next;
-                System.out.println("  Connected to Vertex = "
-                    + tempNode.vertex);
-                System.out.println("  Edge Weight = " + tempNode.weight);
-                System.out.println("  -------------------------------");
-            }
-        }
+    private boolean isIsolatedNode(int nodeId) {
+        return nodeValues[nodeId] != null && (nodeArray[nodeId].next == null
+            || nodeArray[nodeId].next.vertex == -1);
     }
 
 }

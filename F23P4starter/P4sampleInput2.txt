@@ -1,97 +1,42 @@
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
+remove song When Summer's Through
 
-remove song Long Lonesome Blues1
-
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues2
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
-
-remove artist Blind Lemon Jefferson1
-
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson3<SEP>Long Lonesome Blues7
-insert Blind Lemon Jefferson4<SEP>Long Lonesome Blues8
-insert Blind Lemon Jefferson5<SEP>Long Lonesome Blues9
-insert Blind Lemon Jefferson7<SEP>Long Lonesome Blues11
-print artist
 print song
+print artist
 print graph
 
-insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson999<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson9999<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson99999<SEP>Long Lonesome Blues6
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+
+remove song Long Lonesome Blues
+
+print song
+print artist
+print graph
+
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues 2
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues 3
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues 4
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues 5
+insert Ma Rainey<SEP>Ma Rainey's Black Bottom
+insert Ma Rainey<SEP>Long Lonesome Blues
+insert Ma Rainey<SEP>Mississippi Boweavil Blues
+insert Ma Rainey<SEP>Fixin' To Die Blues
 
 print artist
 print song
 print graph
 
-remove song Long Lonesome Blues6
+remove song Sleepy
+remove artist ma rainey
+remove artist Ma Rainey
+print artist
+
+insert Ma Rainey<SEP>Ma Rainey's Black Bottom
+insert Ma Rainey 2<SEP>Ma Rainey's Black Bottom
+insert Ma Rainey 3<SEP>Ma Rainey's Black Bottom
+insert Ma Rainey 4<SEP>Ma Rainey's Black Bottom
+insert Ma Rainey 5<SEP>Ma Rainey's Black Bottom
+
+print artist
+print song
 print graph
-
-remove artist Blind Lemon Jefferson99
-remove artist Blind Lemon Jefferson999
-remove artist Blind Lemon Jefferson9999
-remove artist Blind Lemon Jefferson99999
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues2
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues1
-insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues4
-insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues12
-
-print graph
-
-
-
-
-remove artist Blind Lemon Jefferson1
-remove artist Blind Lemon Jefferson2
-remove artist Blind Lemon Jefferson3
-remove artist Blind Lemon Jefferson4
-remove artist Blind Lemon Jefferson5
-remove artist Blind Lemon Jefferson7
-remove artist Blind Lemon Jefferson9
-remove artist Blind Lemon Jefferson99
-
-
-print graph
-
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues2
-insert Blind Lemon Jefferson2<SEP>Long Lonesome Blues1
-insert Blind Lemon Jefferson9<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues4
-insert Blind Lemon Jefferson99<SEP>Long Lonesome Blues12
-
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
-
-insert Blind Lemon Jefferson3<SEP>Long Lonesome Blues7
-insert Blind Lemon Jefferson4<SEP>Long Lonesome Blues8
-insert Blind Lemon Jefferson5<SEP>Long Lonesome Blues9
-insert Blind Lemon Jefferson7<SEP>Long Lonesome Blues11
-
-print graph
-
-
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues1
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues2
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues3
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues4
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues5
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues6
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues7
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues8
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues9
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues10
-insert Blind Lemon Jefferson1<SEP>Long Lonesome Blues11
-
-print graph
-
-

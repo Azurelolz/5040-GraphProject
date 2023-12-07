@@ -6,22 +6,24 @@
  */
 public class Floyd {
     /**
-     * Method to compute all-pairs shortest paths and return the distance
-     * matrix.
+     * Main Floyd algorithm.
      * 
      * @param g
      *            The adjacent graph.
-     * @return The distance matrix.
+     * @param d
+     *            The distance array.
      */
-    public static int[][] computeShortestPaths(GraphL g) {
+    public Floyd(GraphL g, int[][] d) {
         int n = g.nodeCount();
-        int[][] d = new int[n][n];
 
-        // Initialize
+        // Initialize the distance matrix
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i == j) {
                     d[i][j] = 0;
+                }
+                else if (g.hasEdge(i, j)) {
+                    d[i][j] = g.weight(i, j);
                 }
                 else {
                     d[i][j] = Integer.MAX_VALUE;
@@ -29,63 +31,16 @@ public class Floyd {
             }
         }
 
-        // Set initial distances
-        for (int i = 0; i < n; i++) {
-            int[] neighbors = g.neighbors(i);
-            for (int j : neighbors) {
-                d[i][j] = g.weight(i, j);
-            }
-        }
-
-        // Apply Floyd
+        // Compute shortest paths
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (d[i][k] != Integer.MAX_VALUE
-                        && d[k][j] != Integer.MAX_VALUE && d[i][j] > d[i][k]
-                            + d[k][j]) {
-                        d[i][j] = d[i][k] + d[k][j];
+                        && d[k][j] != Integer.MAX_VALUE) {
+                        d[i][j] = Math.min(d[i][j], d[i][k] + d[k][j]);
                     }
                 }
             }
         }
-
-        return d;
     }
-
-
-    /**
-     * Method to calculate the diameter of the graph using the distance matrix
-     * 
-     * @param distanceMatrix
-     *            The distance matrix.
-     * @return The diameter of the graph.
-     */
-//    public static int calculateDiameter(int[][] distanceMatrix) {
-//        int diameter = 0;
-//        for (int i = 0; i < distanceMatrix.length; i++) {
-//            for (int j = 0; j < distanceMatrix.length; j++) {
-//                if (distanceMatrix[i][j] != Integer.MAX_VALUE
-//                    && distanceMatrix[i][j] > diameter) {
-//                    diameter = distanceMatrix[i][j];
-//                }
-//            }
-//        }
-//        return diameter;
-//    }
-
-
-    public static int calculateDiameter(int[][] distanceMatrix) {
-        int diameter = 0;
-        for (int i = 0; i < distanceMatrix.length; i++) {
-            for (int j = 0; j < distanceMatrix.length; j++) {
-                if (i != j && distanceMatrix[i][j] != Integer.MAX_VALUE
-                    && distanceMatrix[i][j] > diameter) {
-                    diameter = distanceMatrix[i][j];
-                }
-            }
-        }
-        return diameter;
-    }
-
 }
